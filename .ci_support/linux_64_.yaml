@@ -35,7 +35,7 @@ libprotobuf:
 libxml2:
 - '2.13'
 openmpi:
-- '4'
+- '5'
 sqlite:
 - '3'
 target_platform:
