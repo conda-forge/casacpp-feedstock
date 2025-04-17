@@ -1,5 +1,5 @@
 {% set version = "6.7.2.12" %}
-{% set build = "0" %}
+{% set build = 1 %}
 {% set mpi = "openmpi" %}  # force this ... for now?
 {% set mpi_prefix = "mpi_" + mpi %}
 {% set build_pin = mpi_prefix + '_*' %}
@@ -14,6 +14,7 @@ source:
   sha256: 056511bfe4b662e8f4972a7ba3232eb71c8ecedcee2a7db47ceeda2ec1fd8c0a
   patches:
     - versioning.patch
+    - protobuf-detection.patch
 
 build:
   number: {{ build }}
@@ -35,7 +36,7 @@ requirements:
     - {{ compiler("cxx") }}
     - {{ compiler("fortran") }}
   host:
-    - {{ mpi }} 5  # temp: move ahead of global pin to get right casacore
+    - {{ mpi }}
     - casacore 3.7.1 {{ mpi_prefix }}_*_3  # only build with needed "fftpack" files right now
     - cfitsio 4.6.2  # temp: move ahead of global pin to get right casacore
     - fftw
@@ -48,7 +49,7 @@ requirements:
     - libxslt
     - sqlite
   run:
-    - {{ mpi }} 5  # temp: move ahead of global pin to get right casacore
+    - {{ mpi }}
     - libabseil
     - libopenblas
 

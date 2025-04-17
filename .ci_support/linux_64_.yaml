@@ -27,15 +27,15 @@ fortran_compiler_version:
 gsl:
 - '2.7'
 libboost_devel:
-- '1.84'
+- '1.86'
 libgrpc:
-- '1.67'
+- '1.71'
 libprotobuf:
-- 5.28.3
+- 5.29.3
 libxml2:
 - '2.13'
 openmpi:
-- '4'
+- '5'
 sqlite:
 - '3'
 target_platform:
