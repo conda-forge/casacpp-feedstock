@@ -14,6 +14,7 @@ source:
   sha256: 056511bfe4b662e8f4972a7ba3232eb71c8ecedcee2a7db47ceeda2ec1fd8c0a
   patches:
     - versioning.patch
+    - protobuf-detection.patch
 
 build:
   number: {{ build }}
