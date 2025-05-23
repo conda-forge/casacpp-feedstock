@@ -1,5 +1,5 @@
-{% set version = "6.7.2.12" %}
-{% set build = 2 %}
+{% set version = "6.7.2.22" %}
+{% set build = 0 %}
 {% set mpi = "openmpi" %}  # force this ... for now?
 {% set mpi_prefix = "mpi_" + mpi %}
 {% set build_pin = mpi_prefix + '_*' %}
@@ -11,7 +11,7 @@ package:
 source:
   fn: casa-{{ version }}.tar.gz
   url: https://open-bitbucket.nrao.edu/rest/api/latest/projects/CASA/repos/casa6/archive?at=refs%2Ftags%2F{{ version }}&format=tgz
-  sha256: 056511bfe4b662e8f4972a7ba3232eb71c8ecedcee2a7db47ceeda2ec1fd8c0a
+  sha256: 5b7327bac47803a774cb3f5e81ca3496c433348f725fba6ba54dd9e6221c45d9
   patches:
     - versioning.patch
     - protobuf-detection.patch
