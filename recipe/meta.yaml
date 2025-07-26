@@ -1,5 +1,5 @@
-{% set version = "6.7.2.22" %}
-{% set build = 2 %}
+{% set version = "6.7.2.31" %}
+{% set build = 0 %}
 {% set mpi = "openmpi" %}  # force this ... for now?
 {% set mpi_prefix = "mpi_" + mpi %}
 {% set build_pin = mpi_prefix + '_*' %}
@@ -11,7 +11,7 @@ package:
 source:
   fn: casa-{{ version }}.tar.gz
   url: https://open-bitbucket.nrao.edu/rest/api/latest/projects/CASA/repos/casa6/archive?at=refs%2Ftags%2F{{ version }}&format=tgz
-  sha256: 5b7327bac47803a774cb3f5e81ca3496c433348f725fba6ba54dd9e6221c45d9
+  sha256: c8f84fff645d5757f3bbb5586ecb52817a5f04843a6e7c480c24ae8270fc1cbc
   patches:
     - versioning.patch
     - protobuf-detection.patch
@@ -39,7 +39,7 @@ requirements:
     - {{ mpi }}
     - libgomp      # [linux]
     - llvm-openmp  # [osx]
-    - casacore 3.7.1 {{ mpi_prefix }}_*_3  # only build with needed "fftpack" files right now
+    - casacore 3.7.1 {{ mpi_prefix }}_*
     - cfitsio
     - fftw
     - gsl
