@@ -1,0 +1,22 @@
+diff --git a/./casatools/src/code/msvis/MSVis/statistics/Vi2DataProvider.h b/./casatools/src/code/msvis/MSVis/statistics/Vi2DataProvider.h
+index 4570d13..15c8222 100644
+--- a/./casatools/src/code/msvis/MSVis/statistics/Vi2DataProvider.h
++++ b/./casatools/src/code/msvis/MSVis/statistics/Vi2DataProvider.h
+@@ -121,7 +121,7 @@ public:
+ 	}
+ 
+ 	Vi2DataProvider(Vi2DataProvider&& other)
+-		: vi2(other.vi2)
++		: vi2(std::move(other.vi2))
+ 		, mergedColumns(other.mergedColumns)
+ 		, datasetIndex(other.datasetIndex)
+ 		, datasetChunkOrigin(other.datasetChunkOrigin)
+@@ -137,7 +137,7 @@ public:
+ 	}
+ 
+ 	Vi2DataProvider& operator=(Vi2DataProvider&& other) {
+-		vi2 = other.vi2;
++		vi2 = std::move(other.vi2);
+ 		mergedColumns = other.mergedColumns;
+ 		datasetIndex = other.datasetIndex;
+ 		datasetChunkOrigin = other.datasetChunkOrigin;
