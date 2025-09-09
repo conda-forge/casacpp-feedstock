@@ -15,6 +15,7 @@ source:
   patches:
     - versioning.patch
     - protobuf-detection.patch
+    - no-copy-unique_ptr.patch  # [osx]
 
 build:
   number: {{ build }}
@@ -39,7 +40,7 @@ requirements:
     - {{ mpi }}
     - libgomp      # [linux]
     - llvm-openmp  # [osx]
-    - casacore 3.7.1 {{ mpi_prefix }}_*_3  # only build with needed "fftpack" files right now
+    - casacore 3.7.1 {{ mpi_prefix }}_*
     - cfitsio
     - fftw
     - gsl
