@@ -34,8 +34,8 @@ libgrpc:
 - '1.73'
 libprotobuf:
 - 6.31.1
-libxml2:
-- '2.13'
+libxml2_devel:
+- '2.14'
 openmpi:
 - '5'
 sqlite:
