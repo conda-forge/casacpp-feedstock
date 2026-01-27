@@ -31,7 +31,8 @@ requirements:
     - libgomp      # [linux]
     - llvm-openmp  # [osx]
     - ninja
-    - protobuf     # [osx and arm64]
+    - libprotobuf
+    - libgrpc
     - pkg-config
     - {{ compiler("c") }}
     - {{ stdlib("c") }}

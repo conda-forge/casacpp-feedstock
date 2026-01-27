@@ -15,6 +15,9 @@ if [ $(uname) = Darwin ] ; then
       cmake_args+=(
           -Darch=darwin64
           -Darchflag=arm64
+          # Avoid cross-compilation mismatch of protoc/grpc_cpp_plugin
+          -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc
+          -DGRPC_CPP_PLUGIN=$BUILD_PREFIX/bin/grpc_cpp_plugin
       )
     else
       cmake_args+=(
