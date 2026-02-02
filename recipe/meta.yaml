@@ -1,5 +1,5 @@
 {% set version = "6.7.2.42" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set mpi = "openmpi" %}  # force this ... for now?
 {% set mpi_prefix = "mpi_" + mpi %}
 {% set build_pin = mpi_prefix + '_*' %}
@@ -31,6 +31,8 @@ requirements:
     - libgomp      # [linux]
     - llvm-openmp  # [osx]
     - ninja
+    - libprotobuf
+    - libgrpc
     - pkg-config
     - {{ compiler("c") }}
     - {{ stdlib("c") }}
@@ -41,7 +43,6 @@ requirements:
     - libgomp      # [linux]
     - llvm-openmp  # [osx]
     - casacore 3.7.1 {{ mpi_prefix }}_*
-    - cfitsio
     - fftw
     - gsl
     - libboost-devel
@@ -55,6 +56,7 @@ requirements:
     - {{ mpi }}
     - libabseil
     - libopenblas
+    - libgcc       # [osx]
 
 test:
   commands:

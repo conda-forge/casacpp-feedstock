@@ -11,9 +11,22 @@ cmake_args=(
 if [ $(uname) = Darwin ] ; then
     linkflags="-Wl,-rpath,$PREFIX/lib $LDFLAGS"
 
+    if [[ "${target_platform}" == "osx-arm64" ]]; then
+      cmake_args+=(
+          -Darch=darwin64
+          -Darchflag=arm64
+          # Avoid cross-compilation mismatch of protoc/grpc_cpp_plugin
+          -DProtobuf_PROTOC_EXECUTABLE=$BUILD_PREFIX/bin/protoc
+          -DGRPC_CPP_PLUGIN=$BUILD_PREFIX/bin/grpc_cpp_plugin
+      )
+    else
+      cmake_args+=(
+          -Darch=darwin64
+          -Darchflag=x86_64
+      )
+    fi
+
     cmake_args+=(
-        -Darch=darwin64
-        -Darchflag=x86_64
         -DCMAKE_Fortran_COMPILER=$FC
         # Make sure to get Conda versions of libraries:
         -DLIBXML2_ROOT_DIR=$PREFIX
