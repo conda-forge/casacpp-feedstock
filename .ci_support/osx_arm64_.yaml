@@ -29,9 +29,9 @@ gsl:
 libboost_devel:
 - '1.88'
 libgrpc:
-- '1.73'
+- '1.78'
 libprotobuf:
-- 6.31.1
+- 6.33.5
 libxml2_devel:
 - '2.14'
 llvm_openmp:
