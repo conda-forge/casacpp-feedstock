@@ -1,6 +1,6 @@
 # Find new releases by checking tags at: https://open-bitbucket.nrao.edu/projects/CASA/repos/casa6/browse
-{% set version = "6.7.2.42" %}
-{% set build = 4 %}
+{% set version = "6.7.6.1" %}
+{% set build = 0 %}
 {% set mpi = "openmpi" %}  # force this ... for now?
 {% set mpi_prefix = "mpi_" + mpi %}
 {% set build_pin = mpi_prefix + '_*' %}
@@ -12,7 +12,7 @@ package:
 source:
   fn: casa-{{ version }}.tar.gz
   url: https://open-bitbucket.nrao.edu/rest/api/latest/projects/CASA/repos/casa6/archive?at=refs%2Ftags%2F{{ version }}&format=tgz
-  sha256: 5bcdfc745878fe1bb2ba57c6f6ecc587fb5a6da4371faeaa8b396560778590dc
+  sha256: 4f72396a38f943f84d1f9cf2a9f81b05889d7fa3850fb4f4b3364873fae0c1f3
   patches:
     - versioning.patch
     - protobuf-detection.patch
