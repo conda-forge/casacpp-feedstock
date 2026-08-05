@@ -1,6 +1,6 @@
 # Find new releases by checking tags at: https://open-bitbucket.nrao.edu/projects/CASA/repos/casa6/browse
 {% set version = "6.7.6.12" %}
-{% set build = 0 %}
+{% set build = 1 %}
 {% set mpi = "openmpi" %}  # force this ... for now?
 {% set mpi_prefix = "mpi_" + mpi %}
 {% set build_pin = mpi_prefix + '_*' %}
