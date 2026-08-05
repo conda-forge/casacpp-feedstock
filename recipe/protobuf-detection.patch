@@ -1,8 +1,8 @@
 diff --git a/casatools/src/code/CMakeLists.txt b/casatools/src/code/CMakeLists.txt
-index 9f26005..e0cf581 100644
+index 42c68c2..b2fff76 100644
 --- a/casatools/src/code/CMakeLists.txt
 +++ b/casatools/src/code/CMakeLists.txt
-@@ -80,8 +80,9 @@ find_package(FLEX REQUIRED)
+@@ -88,8 +88,9 @@ find_package(FLEX REQUIRED)
  # protobuf/grpc dependency
  find_package(Protobuf REQUIRED)
  find_program(_GRPC_CPP_PLUGIN_EXECUTABLE grpc_cpp_plugin)

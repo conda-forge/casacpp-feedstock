@@ -16,7 +16,6 @@ source:
   patches:
     - versioning.patch
     - protobuf-detection.patch
-    - redeclaration.patch
     - no-copy-unique_ptr.patch  # [osx]
 
 build:
