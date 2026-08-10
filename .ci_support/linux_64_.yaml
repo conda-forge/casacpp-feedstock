@@ -23,7 +23,7 @@ fortran_compiler:
 fortran_compiler_version:
 - '14'
 gsl:
-- '2.7'
+- '2.8'
 libboost_devel:
 - '1.90'
 libgrpc:
