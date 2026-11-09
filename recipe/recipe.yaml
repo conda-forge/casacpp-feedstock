@@ -1,0 +1,80 @@
+schema_version: 1
+
+# Find new releases by checking tags at: https://open-bitbucket.nrao.edu/projects/CASA/repos/casa6/browse
+context:
+  version: "6.8.0.3"
+  build: 1
+  mpi: openmpi  # force this ... for now?
+  mpi_prefix: ${{ "mpi_" + mpi }}
+
+package:
+  name: casacpp
+  version: ${{ version }}
+
+source:
+  url: https://open-bitbucket.nrao.edu/rest/api/latest/projects/CASA/repos/casa6/archive?at=refs%2Ftags%2F${{ version }}&format=tgz
+  sha256: 166f9a797c641dda9ab8322b486f2d02cb4cde4c83228efa49b0b4a1fae58c7b
+  file_name: casa-${{ version }}.tar.gz
+  # Note: there are patches, but because rattler-build refuses to detect the
+  # source file as a tarball, we must apply them manually.
+
+build:
+  number: ${{ build }}
+  string: ${{ mpi_prefix }}_h${{ hash }}_${{ build }}
+  skip: win
+
+requirements:
+  build:
+    - cmake <4
+    - bison
+    - if: linux
+      then: libgomp
+    - if: osx
+      then: llvm-openmp
+    - ninja
+    - libprotobuf
+    - libgrpc
+    - patch
+    - pkg-config
+    - tar
+    - ${{ compiler("c") }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler("cxx") }}
+    - ${{ compiler("fortran") }}
+  host:
+    - ${{ mpi }}
+    - if: linux
+      then: libgomp
+    - if: osx
+      then: llvm-openmp
+    - casacore >=3.8,<3.8.2 ${{ mpi_prefix }}_*
+    - fftw
+    - gsl
+    - libboost-devel
+    - libgrpc
+    - libprotobuf
+    - libsakura
+    - libxml2-devel
+    - libxslt
+    - sqlite
+  run:
+    - ${{ mpi }}
+    - libabseil
+    - libopenblas
+    - if: osx
+      then: libgcc
+  run_exports:
+    - ${{ pin_subpackage("casacpp", lower_bound="x.x.x", upper_bound="x.x.x", build=mpi_prefix+"_*") }}
+
+tests:
+  - script: run_test.sh
+
+about:
+  license: LGPL-2.1-or-later
+  license_file: LICENSE.txt
+  summary: C++ libraries underlying CASA, the radio astronomical data processing package
+  homepage: https://casa.nrao.edu/
+
+extra:
+  recipe-maintainers:
+    - pkgw
