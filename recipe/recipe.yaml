@@ -47,7 +47,7 @@ requirements:
       then: libgomp
     - if: osx
       then: llvm-openmp
-    - casacore >=3.8,<3.8.2 ${{ mpi_prefix }}_*
+    - casacore >=3.8,<3.8.2 ${{ mpi_prefix }}_*  # 3.8.2 breaks API/ABI, not currently supported by CASA6
     - fftw
     - gsl
     - libboost-devel
@@ -59,6 +59,7 @@ requirements:
     - sqlite
   run:
     - ${{ mpi }}
+    - casacore >=3.8,<3.8.2 ${{ mpi_prefix }}_*  # our pin must be stricter than the casacore run_export
     - libabseil
     - libopenblas
     - if: osx
