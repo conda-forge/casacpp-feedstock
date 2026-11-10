@@ -2,6 +2,18 @@
 
 set -xeuo pipefail
 
+# Due to the (current) source URL format, rattler-build won't automatically
+# decompress the source tarball, so we have to do that and apply patches
+# manually.
+
+tar xzf casa-*.tar.gz
+rm -f casa-*.tar.gz
+patch -p1 -i $RECIPE_DIR/versioning.patch
+patch -p1 -i $RECIPE_DIR/protobuf-detection.patch
+if [ $(uname) = Darwin ] ; then
+    patch -p1 -i $RECIPE_DIR/no-copy-unique_ptr.patch
+fi
+
 cmake_args=(
     $CMAKE_ARGS
     -GNinja
