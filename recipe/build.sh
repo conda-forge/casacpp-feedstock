@@ -11,7 +11,7 @@ rm -f casa-*.tar.gz
 patch -p1 -i $RECIPE_DIR/versioning.patch
 patch -p1 -i $RECIPE_DIR/protobuf-detection.patch
 if [ $(uname) = Darwin ] ; then
-    patch -p1 -i no-copy-unique_ptr.patch
+    patch -p1 -i $RECIPE_DIR/no-copy-unique_ptr.patch
 fi
 
 cmake_args=(

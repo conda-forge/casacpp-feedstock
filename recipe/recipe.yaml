@@ -35,7 +35,7 @@ requirements:
     - libprotobuf
     - libgrpc
     - patch
-    - pkg-config
+    - pkgconf
     - tar
     - ${{ compiler("c") }}
     - ${{ stdlib("c") }}
